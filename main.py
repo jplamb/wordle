@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 PAST_WORDLE_ANSWERS_URL = "https://www.rockpapershotgun.com/wordle-past-answers"
 NUM_GUESSES_SUGGESTED = 10
-TEST_MODE = True
+TEST_MODE = False
 LOG_LEVEL = logging.INFO
 
 # Configure logging
@@ -292,7 +292,7 @@ def suggest_guess(words_by_overall, words_by_entropy, eligible_words, guess_num=
 # To test: https://wordlearchive.com/
 if __name__ == '__main__':
     main([
-        ("tares", "**yy*"),
-        ("coign", "*y**y"),
+        ("saner", "y**yy"),
+        ("poets", "g*y*y"),
         # ("adept", "g*y*y")
     ])

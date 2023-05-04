@@ -1,3 +1,6 @@
 .DS_Store
 .idea/
 SUBTLEX-US frequency list with PoS and Zipf information.xlsx
+
+db.sqlite3
+node_modules/
