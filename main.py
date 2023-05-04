@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 PAST_WORDLE_ANSWERS_URL = "https://www.rockpapershotgun.com/wordle-past-answers"
 NUM_GUESSES_SUGGESTED = 10
 TEST_MODE = True
-LOG_LEVEL = logging.DEBUG
+LOG_LEVEL = logging.INFO
 
 # Configure logging
 logging.basicConfig(
@@ -24,15 +24,17 @@ def main(feedback):
     word_list = get_most_common_words()
     logging.info(f"There are {len(word_list)} words")
 
-    eligible_words = get_eligible_words(word_list, feedback, prior_answers)
+    words_by_freq = get_words_by_familiarity(word_list)
+    logging.info(f"There are {len(words_by_freq)} words with familiarity scores")
+
+    eligible_words = get_eligible_words(words_by_freq, feedback, prior_answers)
     logging.info(f"There are {len(eligible_words)} eligible words remaining")
 
-    words_by_freq = get_words_by_familiarity(eligible_words)
 
     letter_pos_freq, overall_letter_freq = create_frequency_set(eligible_words)
 
-    words_by_entropy = rank_words_information_gain(word_list, letter_pos_freq, overall_letter_freq, len(feedback) + 1)
-    words_by_overall = rank_words(words_by_freq, words_by_entropy, word_list, eligible_words, len(feedback) + 1)
+    words_by_entropy = rank_words_information_gain(words_by_freq, letter_pos_freq, overall_letter_freq, len(feedback) + 1)
+    words_by_overall = rank_words(words_by_freq, words_by_entropy, words_by_freq, eligible_words, len(feedback) + 1)
 
     guesses = suggest_guess(words_by_overall, words_by_entropy, eligible_words, len(feedback) + 1)
     output_guesses(guesses)
@@ -40,9 +42,9 @@ def main(feedback):
 def output_guesses(guesses):
     if len(guesses):
         logging.info("\n\nRecommended guesses ordered by expected information gain")
-        logging.info("<WORD> <Overall Rank> (<Score by Letter Position> <Score by Entropy>)")
+        logging.info("<WORD> <Overall Rank> (<Entropy score>)")
         for guess in guesses:
-            logging.info(f"\t{guess[0].upper()}:\t{guess[1]:.4f}\t\t\t({guess[2]:.3f}\t|\t{guess[3]:.3f})")
+            logging.info(f"\t{guess[0].upper()}:\t{guess[1]:.4f}\t\t({guess[2]:.3f})")
     else:
         logging.warning("No guesses were recommended. This means the answer is not found in our list of words.")
 
@@ -50,12 +52,12 @@ def output_guesses(guesses):
 def get_most_common_words():
     # Get the most common words from the nltk Brown corpus
     filename = "common_words.txt"
-    word_freq = {}
+    words = {}
     with open(filename, 'r') as f:
         for line in f:
             word, freq = line.strip().split(',')
-            word_freq[word] = float(freq)
-    return word_freq
+            words[word] = float(freq)
+    return words
 
 def get_eligible_words(common_words, feedback, previous_answers):
     # Feedback is a list of lists. Each sub-list is a tuple of guess to the info gained.
@@ -153,11 +155,11 @@ def create_frequency_set(five_letter_words):
     # Convert frequency to probability
     for pos in range(1, 6):
         for letter in position_freq_count[pos]:
-            position_freq[pos][letter] /= total
+            position_freq[pos][letter] = position_freq_count[pos][letter] / total
 
     overall_letter_freq = {}
     for letter in letter_freq:
-        overall_letter_freq[letter] /= total
+        overall_letter_freq[letter] = letter_freq[letter] / total
 
     return position_freq, overall_letter_freq
 
@@ -183,14 +185,18 @@ def get_words_by_familiarity(common_words):
                 adj_score = 0.001
             else:
                 adj_score = 0.25
-            if word in common_words:
-                word_freq[word] = adj_score
+            word_freq[word] = adj_score
+
+    for word in common_words:
+        if word not in word_freq:
+            word_freq[word] = 0.25
 
     return word_freq
 
 
 def rank_words_information_gain(word_list, letter_pos_freq, overall_letter_freq, guess_num):
     # rank words by information gain
+    # Thanks to https://www.3blue1brown.com/lessons/wordle for jogging my memory on how to do this
     logging.info("Ranking words by information gain")
     word_entropy = {}
     for word in word_list.keys():
@@ -214,7 +220,7 @@ def rank_words_information_gain(word_list, letter_pos_freq, overall_letter_freq,
                 # Information gained is the -log2(p) where p is the probability of...
                 letter_pos_prob = (1 - letter_pos_freq[i + 1][letter])
                 info_gained_letter_in_pos = -1. * letter_pos_prob * math.log2(letter_pos_prob) if letter_pos_prob > 0 else 0
-            logging.debug(f"Letter in pos: {letter} {letter_pos_prob} {info_gained_letter_in_pos}")
+                logging.debug(f"Letter in pos: {letter} {letter_pos_prob} {info_gained_letter_in_pos}")
             if guess_num < 3:
                 entropy += 0.7 * info_gained_letter_in_word + 0.3 * info_gained_letter_in_pos
             else:
@@ -283,9 +289,10 @@ def suggest_guess(words_by_overall, words_by_entropy, eligible_words, guess_num=
         return suggested_guesses
 
 
+# To test: https://wordlearchive.com/
 if __name__ == '__main__':
     main([
-        ("saner", "***y*"),
-        ("pilot", "**g**"),
-        # ("belly", "*gg**")
+        ("tares", "**yy*"),
+        ("coign", "*y**y"),
+        # ("adept", "g*y*y")
     ])
