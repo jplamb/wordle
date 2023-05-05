@@ -16,6 +16,9 @@ mod-wsgi = "^4.9.4"
 mysqlclient = "^2.1.1"
 django = "^4.2.1"
 djangorestframework = "^3.14.0"
+django-webpack-loader = "^1.8.1"
+django-cors-headers = "^3.14.0"
+django-rest-auth = "^0.9.5"
 
 
 [build-system]

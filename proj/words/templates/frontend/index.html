@@ -1,0 +1,16 @@
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    Django
+  </head>
+  <body>
+    <div id="root"></div>
+    {% render_bundle 'main' %}
+  </body>
+</html>
+{#{% if settings.DEBUG %}#}
+{#      <script src="{{ settings.WEBPACK_DEV_SERVER_URL }}static/frontend/bundle.js"></script> #}
+{#        {% else %}#}
+{#          {% render_bundle 'main' %}#}
+{#        {% endif %}#}

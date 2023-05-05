@@ -4,3 +4,8 @@ SUBTLEX-US frequency list with PoS and Zipf information.xlsx
 
 db.sqlite3
 node_modules/
+
+**.env
+
+**/__pychache__/
+*.pyc

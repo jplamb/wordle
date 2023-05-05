@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
-import Word_test from "./components/word_test";
+import WordTest from "./components/WordTest";
 
 function App() {
   return (
     <div >
       <header>
-        Wordle
+        Wordle - React
       </header>
       <div>
-        <Word_test />
+        <WordTest />
       </div>
     </div>
   );

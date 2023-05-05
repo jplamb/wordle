@@ -1,0 +1,47 @@
+{
+  "status": "done",
+  "assets": {
+    "../../../proj/templates/frontend/index.html": {
+      "name": "../../../proj/templates/frontend/index.html",
+      "path": "/Users/johnlamb/projects/wordle/frontend/proj/templates/frontend/index.html",
+      "publicPath": "http://localhost:8080/static/frontend/../../../proj/templates/frontend/index.html"
+    },
+    "bundle.js": {
+      "name": "bundle.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/bundle.js",
+      "publicPath": "http://localhost:8080/static/frontend/bundle.js"
+    },
+    "main.c64718d63a263cf3f140.hot-update.js": {
+      "name": "main.c64718d63a263cf3f140.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.c64718d63a263cf3f140.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.c64718d63a263cf3f140.hot-update.js"
+    },
+    "main.c64718d63a263cf3f140.hot-update.json": {
+      "name": "main.c64718d63a263cf3f140.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.c64718d63a263cf3f140.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.c64718d63a263cf3f140.hot-update.json"
+    },
+    "main.d2bf99d58b175f69ab66.hot-update.js": {
+      "name": "main.d2bf99d58b175f69ab66.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.d2bf99d58b175f69ab66.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.d2bf99d58b175f69ab66.hot-update.js"
+    },
+    "main.d2bf99d58b175f69ab66.hot-update.json": {
+      "name": "main.d2bf99d58b175f69ab66.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.d2bf99d58b175f69ab66.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.d2bf99d58b175f69ab66.hot-update.json"
+    },
+    "node_modules_web-vitals_dist_web-vitals_js.bundle.js": {
+      "name": "node_modules_web-vitals_dist_web-vitals_js.bundle.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/node_modules_web-vitals_dist_web-vitals_js.bundle.js",
+      "publicPath": "http://localhost:8080/static/frontend/node_modules_web-vitals_dist_web-vitals_js.bundle.js"
+    }
+  },
+  "chunks": {
+    "main": [
+      "bundle.js",
+      "main.c64718d63a263cf3f140.hot-update.js"
+    ]
+  },
+  "publicPath": "http://localhost:8080/static/frontend/"
+}
