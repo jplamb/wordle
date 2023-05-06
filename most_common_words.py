@@ -26,6 +26,6 @@ for word in words:
 sorted_words = sorted(word_freq.items(), key=lambda x: x[1], reverse=True)
 total_words = len(words)
 # Save the 100 most common words to a text file
-with open('common_words.txt', 'w') as f:
+with open('proj/words/management/data/common_words.txt', 'w') as f:
     for word, freq in sorted_words:
         f.write(f"{word},{freq/total_words * 100.}\n")

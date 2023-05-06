@@ -11,6 +11,156 @@
       "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/bundle.js",
       "publicPath": "http://localhost:8080/static/frontend/bundle.js"
     },
+    "main.02386801d511d397afb6.hot-update.js": {
+      "name": "main.02386801d511d397afb6.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.02386801d511d397afb6.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.02386801d511d397afb6.hot-update.js"
+    },
+    "main.02386801d511d397afb6.hot-update.json": {
+      "name": "main.02386801d511d397afb6.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.02386801d511d397afb6.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.02386801d511d397afb6.hot-update.json"
+    },
+    "main.329f7d16b02d06f622c5.hot-update.js": {
+      "name": "main.329f7d16b02d06f622c5.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.329f7d16b02d06f622c5.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.329f7d16b02d06f622c5.hot-update.js"
+    },
+    "main.329f7d16b02d06f622c5.hot-update.json": {
+      "name": "main.329f7d16b02d06f622c5.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.329f7d16b02d06f622c5.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.329f7d16b02d06f622c5.hot-update.json"
+    },
+    "main.3f9364ad39be1b5280ac.hot-update.js": {
+      "name": "main.3f9364ad39be1b5280ac.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.3f9364ad39be1b5280ac.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.3f9364ad39be1b5280ac.hot-update.js"
+    },
+    "main.3f9364ad39be1b5280ac.hot-update.json": {
+      "name": "main.3f9364ad39be1b5280ac.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.3f9364ad39be1b5280ac.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.3f9364ad39be1b5280ac.hot-update.json"
+    },
+    "main.4184c92a29f5de5ac1f8.hot-update.js": {
+      "name": "main.4184c92a29f5de5ac1f8.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.4184c92a29f5de5ac1f8.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.4184c92a29f5de5ac1f8.hot-update.js"
+    },
+    "main.4184c92a29f5de5ac1f8.hot-update.json": {
+      "name": "main.4184c92a29f5de5ac1f8.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.4184c92a29f5de5ac1f8.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.4184c92a29f5de5ac1f8.hot-update.json"
+    },
+    "main.487fb9e0d7931fa93960.hot-update.js": {
+      "name": "main.487fb9e0d7931fa93960.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.487fb9e0d7931fa93960.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.487fb9e0d7931fa93960.hot-update.js"
+    },
+    "main.487fb9e0d7931fa93960.hot-update.json": {
+      "name": "main.487fb9e0d7931fa93960.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.487fb9e0d7931fa93960.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.487fb9e0d7931fa93960.hot-update.json"
+    },
+    "main.4a8a3740d6dfb0bfd9f6.hot-update.js": {
+      "name": "main.4a8a3740d6dfb0bfd9f6.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.4a8a3740d6dfb0bfd9f6.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.4a8a3740d6dfb0bfd9f6.hot-update.js"
+    },
+    "main.4a8a3740d6dfb0bfd9f6.hot-update.json": {
+      "name": "main.4a8a3740d6dfb0bfd9f6.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.4a8a3740d6dfb0bfd9f6.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.4a8a3740d6dfb0bfd9f6.hot-update.json"
+    },
+    "main.5140cd98bb9b33b0a89e.hot-update.js": {
+      "name": "main.5140cd98bb9b33b0a89e.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.5140cd98bb9b33b0a89e.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.5140cd98bb9b33b0a89e.hot-update.js"
+    },
+    "main.5140cd98bb9b33b0a89e.hot-update.json": {
+      "name": "main.5140cd98bb9b33b0a89e.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.5140cd98bb9b33b0a89e.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.5140cd98bb9b33b0a89e.hot-update.json"
+    },
+    "main.82d11a258ca74cbd855a.hot-update.js": {
+      "name": "main.82d11a258ca74cbd855a.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.82d11a258ca74cbd855a.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.82d11a258ca74cbd855a.hot-update.js"
+    },
+    "main.82d11a258ca74cbd855a.hot-update.json": {
+      "name": "main.82d11a258ca74cbd855a.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.82d11a258ca74cbd855a.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.82d11a258ca74cbd855a.hot-update.json"
+    },
+    "main.94e5ca9bef3236db5fa7.hot-update.js": {
+      "name": "main.94e5ca9bef3236db5fa7.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.94e5ca9bef3236db5fa7.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.94e5ca9bef3236db5fa7.hot-update.js"
+    },
+    "main.94e5ca9bef3236db5fa7.hot-update.json": {
+      "name": "main.94e5ca9bef3236db5fa7.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.94e5ca9bef3236db5fa7.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.94e5ca9bef3236db5fa7.hot-update.json"
+    },
+    "main.95df376cb75701d0a40d.hot-update.js": {
+      "name": "main.95df376cb75701d0a40d.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.95df376cb75701d0a40d.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.95df376cb75701d0a40d.hot-update.js"
+    },
+    "main.95df376cb75701d0a40d.hot-update.json": {
+      "name": "main.95df376cb75701d0a40d.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.95df376cb75701d0a40d.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.95df376cb75701d0a40d.hot-update.json"
+    },
+    "main.b6438033fe67474f6ae1.hot-update.js": {
+      "name": "main.b6438033fe67474f6ae1.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.b6438033fe67474f6ae1.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.b6438033fe67474f6ae1.hot-update.js"
+    },
+    "main.b6438033fe67474f6ae1.hot-update.json": {
+      "name": "main.b6438033fe67474f6ae1.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.b6438033fe67474f6ae1.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.b6438033fe67474f6ae1.hot-update.json"
+    },
+    "main.b923026795b5865183d2.hot-update.js": {
+      "name": "main.b923026795b5865183d2.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.b923026795b5865183d2.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.b923026795b5865183d2.hot-update.js"
+    },
+    "main.b923026795b5865183d2.hot-update.json": {
+      "name": "main.b923026795b5865183d2.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.b923026795b5865183d2.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.b923026795b5865183d2.hot-update.json"
+    },
+    "main.bddfd8ed821760fc09cd.hot-update.js": {
+      "name": "main.bddfd8ed821760fc09cd.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.bddfd8ed821760fc09cd.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.bddfd8ed821760fc09cd.hot-update.js"
+    },
+    "main.bddfd8ed821760fc09cd.hot-update.json": {
+      "name": "main.bddfd8ed821760fc09cd.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.bddfd8ed821760fc09cd.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.bddfd8ed821760fc09cd.hot-update.json"
+    },
+    "main.c4f33379672be471df6e.hot-update.js": {
+      "name": "main.c4f33379672be471df6e.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.c4f33379672be471df6e.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.c4f33379672be471df6e.hot-update.js"
+    },
+    "main.c4f33379672be471df6e.hot-update.json": {
+      "name": "main.c4f33379672be471df6e.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.c4f33379672be471df6e.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.c4f33379672be471df6e.hot-update.json"
+    },
+    "main.c5928bd3174258cce80c.hot-update.js": {
+      "name": "main.c5928bd3174258cce80c.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.c5928bd3174258cce80c.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.c5928bd3174258cce80c.hot-update.js"
+    },
+    "main.c5928bd3174258cce80c.hot-update.json": {
+      "name": "main.c5928bd3174258cce80c.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.c5928bd3174258cce80c.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.c5928bd3174258cce80c.hot-update.json"
+    },
     "main.c64718d63a263cf3f140.hot-update.js": {
       "name": "main.c64718d63a263cf3f140.hot-update.js",
       "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.c64718d63a263cf3f140.hot-update.js",
@@ -20,6 +170,26 @@
       "name": "main.c64718d63a263cf3f140.hot-update.json",
       "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.c64718d63a263cf3f140.hot-update.json",
       "publicPath": "http://localhost:8080/static/frontend/main.c64718d63a263cf3f140.hot-update.json"
+    },
+    "main.cb7ebc9dfa7018ccfb6d.hot-update.js": {
+      "name": "main.cb7ebc9dfa7018ccfb6d.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.cb7ebc9dfa7018ccfb6d.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.cb7ebc9dfa7018ccfb6d.hot-update.js"
+    },
+    "main.cb7ebc9dfa7018ccfb6d.hot-update.json": {
+      "name": "main.cb7ebc9dfa7018ccfb6d.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.cb7ebc9dfa7018ccfb6d.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.cb7ebc9dfa7018ccfb6d.hot-update.json"
+    },
+    "main.cfdf4cca07406bf89038.hot-update.js": {
+      "name": "main.cfdf4cca07406bf89038.hot-update.js",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.cfdf4cca07406bf89038.hot-update.js",
+      "publicPath": "http://localhost:8080/static/frontend/main.cfdf4cca07406bf89038.hot-update.js"
+    },
+    "main.cfdf4cca07406bf89038.hot-update.json": {
+      "name": "main.cfdf4cca07406bf89038.hot-update.json",
+      "path": "/Users/johnlamb/projects/wordle/frontend/webpack/public/frontend/main.cfdf4cca07406bf89038.hot-update.json",
+      "publicPath": "http://localhost:8080/static/frontend/main.cfdf4cca07406bf89038.hot-update.json"
     },
     "main.d2bf99d58b175f69ab66.hot-update.js": {
       "name": "main.d2bf99d58b175f69ab66.hot-update.js",
@@ -40,8 +210,10 @@
   "chunks": {
     "main": [
       "bundle.js",
-      "main.c64718d63a263cf3f140.hot-update.js"
+      "main.02386801d511d397afb6.hot-update.js"
     ]
   },
-  "publicPath": "http://localhost:8080/static/frontend/"
+  "publicPath": "http://localhost:8080/static/frontend/",
+  "error": "ModuleParseError",
+  "message": "Module parse failed: Unexpected token (7:69)\nFile was processed with these loaders:\n * ./node_modules/ts-loader/index.js\nYou may need an additional loader to handle the result of these loaders.\n|     useEffect(function () {\n|         var _a;\n>         api.get('suggest/', (_a = { params: guesses }, _a['saner'] = , _a['*yygg'] = , _a))\n|             .then(function (res) { return setWords(res.data); })\n|             .catch(function (err) { return console.log(err); });"
 }

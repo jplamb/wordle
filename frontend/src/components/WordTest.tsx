@@ -4,26 +4,34 @@ import api from '../axiosConfig';
 interface Word {
   id: number;
   word: string;
-  was_answer: boolean;
+  score: number;
+  info_gain: number;
 }
 
 
 function WordList(): JSX.Element {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [words, setWords] = useState<Word[]>([]);
 
   useEffect(() => {
-    api.get<Word[]>('words/')
-      .then(res => setWords(res.data))
+    api.post<Word[]>('suggest/', {
+        guesses: ['saner', 'glint', 'ocean'],
+        feedback: ['*yyy*', '***y*', '**gyy']
+      })
+      .then(res => {
+        setWords(res.data);
+        setIsLoading(false);
+      })
       .catch(err => console.log(err));
   }, []);
 
-  console.log(`words: ${words}`);
-
   return (
     <ul>
-      {words.map(word => (
-        <li key={word.id}>{word.word}</li>
-      ))}
+      {isLoading ?
+          <p>Loading...</p> : words.length ? words.map(word => (
+        <li key={word.id}>{word.word} - {word.score} - {word.info_gain}</li>
+               
+      )) : <p>No words found</p>}
     </ul>
   );
 }

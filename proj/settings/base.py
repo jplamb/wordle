@@ -164,3 +164,8 @@ from corsheaders.defaults import default_headers
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'Token',
 ]
+
+
+PAST_WORDLE_ANSWERS_URL = "https://www.rockpapershotgun.com/wordle-past-answers"
+IS_TEST_MODE = False
+NUM_GUESSES_SUGGESTED = 10

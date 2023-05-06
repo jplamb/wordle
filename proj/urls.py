@@ -20,7 +20,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from rest_framework import routers
-from proj.words.views import WordItemViewset
+from proj.words.views import WordItemViewset, SuggestWordsView
 
 router = routers.DefaultRouter()
 router.register(r'words', WordItemViewset)
@@ -30,4 +30,5 @@ urlpatterns = [
     path('words/', include('proj.words.urls')),
     path('', TemplateView.as_view(template_name='frontend/index.html')),
     path('admin/', admin.site.urls),
+    path('api/suggest/', SuggestWordsView.as_view(), name='suggest-words'),
 ]

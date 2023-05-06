@@ -51,7 +51,7 @@ def output_guesses(guesses):
 
 def get_most_common_words():
     # Get the most common words from the nltk Brown corpus
-    filename = "common_words.txt"
+    filename = "proj/words/management/data/common_words.txt"
     words = {}
     with open(filename, 'r') as f:
         for line in f:
@@ -174,7 +174,7 @@ def get_words_by_familiarity(common_words):
     """
     # return dictionary of words sorted by commonality (most common first)
     logging.info("Retrieving the most familiar words based on usage frequency")
-    filename = "word_freq_measure.txt"
+    filename = "proj/words/management/data/word_freq_measure.txt"
     word_freq = {}
     with open(filename, 'r') as f:
         for line in f:
