@@ -4,9 +4,8 @@ import requests
 
 from bs4 import BeautifulSoup
 
-from proj.settings.base import PAST_WORDLE_ANSWERS_URL, IS_TEST_MODE
 from proj.words.models import Word
-from proj.settings.base import NUM_GUESSES_SUGGESTED
+from proj.settings.settings_loader import NUM_GUESSES_SUGGESTED, PAST_WORDLE_ANSWERS_URL, IS_TEST_MODE
 
 
 def get_and_update_prior_answers():
@@ -107,7 +106,8 @@ def get_eligible_words(feedback):
     # logging.debug(f"Letters known position: {letters_known_pos}")
     # logging.debug(f"Letters known not in this position: {letters_known_not_pos}")
     eligible_words = []
-    for word in Word.objects.filter(was_answer=False):
+    word_set = Word.objects.filter(was_answer=False) if not IS_TEST_MODE else Word.objects.all()
+    for word in word_set:
         word_text = word.word
         # logging.debug(f"Checking {word}: {letters_in_answer.issubset(word)} and {letters_not_in_answer.isdisjoint(word)}")
         if letters_in_answer.issubset(word_text) and letters_not_in_answer.isdisjoint(word_text):

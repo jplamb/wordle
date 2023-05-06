@@ -23,7 +23,7 @@ class SuggestWordsView(APIView):
 
         get_and_update_prior_answers()
 
-        suggestions = suggest_guesses([(guess, feedback) for guess, feedback in zip(guesses, feedback)])
+        suggestions = suggest_guesses([(guess.lower(), feedback.lower()) for guess, feedback in zip(guesses, feedback)])
         if len(suggestions) == 0:
             return Response([], status=status.HTTP_200_OK)
         ranked_guesses = [
