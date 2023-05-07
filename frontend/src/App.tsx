@@ -4,11 +4,11 @@ import Wordle from "./components/Wordle";
 
 function App() {
   return (
-    <div >
+    <div className="App-container">
       <header>
 
       </header>
-      <div>
+      <div className="App">
           <Wordle />
       </div>
     </div>

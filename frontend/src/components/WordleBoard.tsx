@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './WordleBoard.css';
 import getSuggestedGuesses from '../utils/getSuggestedGuesses';
 import SuggestedGuesses from "./SuggestedGuesses";
@@ -18,12 +18,36 @@ const WordleBoard: React.FC = () => {
   const [activeRow, setActiveRow] = useState(0);
   const [suggestions, setSuggestions] = useState<Word[]>([]);
 
+  const firstInputRef = useRef<HTMLInputElement>(null);
+  const inputRefs = useRef<(HTMLInputElement | null)[][]>(
+    Array.from({ length: 6 }, () => Array.from({ length: 5 }, () => null))
+  );
+  const [isSubmitEnabled, setIsSubmitEnabled] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (firstInputRef.current) {
+      firstInputRef.current.focus();
+    }
+  }, [suggestions]);
+
+  useEffect(() => {
+    const activeRowData = board[activeRow];
+    const allCellsFilled = activeRowData.every((cell) => cell !== '');
+    setIsSubmitEnabled(allCellsFilled);
+  }, [board, activeRow]);
 
   const handleInputChange = (row: number, col: number, value: string) => {
     if (row === activeRow) {
       const newBoard = [...board];
       newBoard[row][col] = value.toUpperCase();
       setBoard(newBoard);
+    }
+    if (col < 4) {
+      // Focus the next input in the same row
+      inputRefs.current[row][col + 1]?.focus();
+    } else if (row < 5) {
+      // Focus the first input in the next row
+      inputRefs.current[row + 1][0]?.focus();
     }
   };
 
@@ -36,7 +60,7 @@ const WordleBoard: React.FC = () => {
     }
   };
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const submitGuess = async () => {
     if (activeRow < BOARD_ROWS - 1) {
       setActiveRow(activeRow + 1);
     }
@@ -57,6 +81,20 @@ const WordleBoard: React.FC = () => {
     setSuggestions(newSuggestions);
   };
 
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    submitGuess();
+  };
+
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      submitGuess();
+    }
+  };
+
+
+
   return (
     <div className="WordleBoard">
       {board.map((row, rowIndex) => (
@@ -64,19 +102,21 @@ const WordleBoard: React.FC = () => {
           <div className="WordleRow">
             {row.map((letter, colIndex) => (
               <input
-                key={colIndex}
+                key={`cell-${rowIndex}-${colIndex}`}
                 className="WordleCell"
                 style={{ backgroundColor: cellBackgrounds[rowIndex][colIndex] }}
+                ref={rowIndex === activeRow && colIndex === 0 ? firstInputRef : (el) => (inputRefs.current[rowIndex][colIndex] = el)}
                 type="text"
                 maxLength={1}
                 value={letter}
                 onChange={(e) => handleInputChange(rowIndex, colIndex, e.target.value)}
                 onClick={() => handleCellClick(rowIndex, colIndex)}
                 disabled={rowIndex !== activeRow}
+                onKeyDown={handleKeyDown}
               />
             ))}
           </div>
-          <button onClick={handleSubmit} disabled={rowIndex !== activeRow}>
+          <button onClick={handleSubmit} disabled={rowIndex !== activeRow || !isSubmitEnabled} >
             Submit
           </button>
         </div>
