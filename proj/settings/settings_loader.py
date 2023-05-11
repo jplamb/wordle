@@ -14,3 +14,4 @@ except ImportError:
 for setting in dir(settings):
     if setting.isupper():
         setattr(sys.modules[__name__], setting, getattr(settings, setting))
+print(f"Loaded settings from {settings_module}")

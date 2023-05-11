@@ -1,5 +1,6 @@
 import heapq
 import math
+import logging
 import requests
 
 from bs4 import BeautifulSoup
@@ -7,10 +8,19 @@ from bs4 import BeautifulSoup
 from proj.words.models import Word
 from proj.settings.settings_loader import NUM_GUESSES_SUGGESTED, PAST_WORDLE_ANSWERS_URL, IS_TEST_MODE
 
+LOG_LEVEL = logging.DEBUG
 
-def get_and_update_prior_answers():
+# Configure logging
+logging.basicConfig(
+    level=LOG_LEVEL,  # Set the lowest severity level to log
+    format="%(asctime)s [%(levelname)s]: %(message)s",  # Set the log format
+    datefmt="%Y-%m-%d %H:%M:%S"  # Set the date format
+)
+
+
+def get_previous_answers(test_mode=IS_TEST_MODE):
     # logging.info(f"Collecting past answers")
-    if IS_TEST_MODE:
+    if test_mode:
         return []
 
     response = requests.get(PAST_WORDLE_ANSWERS_URL)
@@ -24,10 +34,18 @@ def get_and_update_prior_answers():
 
     # Extract the text content of the <ul> element
     ul_content = ul_el.get_text(strip=False)
+    words = set()
     for word_text in ul_content.split():
         word_text = word_text.lower()
         if len(word_text) != 5:
             continue
+        words.add(word_text)
+    return list(words)
+
+
+def get_and_update_prior_answers():
+    words = get_previous_answers()
+    for word_text in words:
         try:
             Word.objects.filter(word=word_text).update(was_answer=True)
         except Word.DoesNotExist:
@@ -92,8 +110,10 @@ def get_eligible_words(feedback):
         for i in range(5):
             letter = guess[i]
             learned = info[i]
-            if learned == "*":
+            if learned == "*" and letter not in letters_in_answer:
                 letters_not_in_answer.add(letter)
+            elif learned == "*" and letter in letters_in_answer:
+                letters_known_not_pos[i].add(letter)
             elif learned == "y":
                 letters_in_answer.add(letter)
                 letters_known_not_pos[i].add(letter)
@@ -106,7 +126,7 @@ def get_eligible_words(feedback):
     # logging.debug(f"Letters known position: {letters_known_pos}")
     # logging.debug(f"Letters known not in this position: {letters_known_not_pos}")
     eligible_words = []
-    word_set = Word.objects.filter(was_answer=False) if not IS_TEST_MODE else Word.objects.all()
+    word_set = Word.objects.all() if IS_TEST_MODE else Word.objects.filter(was_answer=False)
     for word in word_set:
         word_text = word.word
         # logging.debug(f"Checking {word}: {letters_in_answer.issubset(word)} and {letters_not_in_answer.isdisjoint(word)}")
@@ -119,6 +139,7 @@ def get_eligible_words(feedback):
                     break
             else:
                 eligible_words.append(word)
+
     return eligible_words
 
 
@@ -188,7 +209,7 @@ def rank_words_information_gain(word_list, letter_pos_freq, overall_letter_freq,
                 info_gained_letter_in_pos = -1. * letter_pos_prob * math.log2(letter_pos_prob) if letter_pos_prob > 0 else 0
                 # logging.debug(f"Letter in pos: {letter} {letter_pos_prob} {info_gained_letter_in_pos}")
             if guess_num < 3:
-                entropy += 0.7 * info_gained_letter_in_word + 0.3 * info_gained_letter_in_pos
+                entropy += 0.6 * info_gained_letter_in_word + 0.4 * info_gained_letter_in_pos
             else:
                 entropy += 0.1 * info_gained_letter_in_word + 0.9 * info_gained_letter_in_pos
             # logging.debug(f"Entropy: {entropy}")
