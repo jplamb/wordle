@@ -9,12 +9,12 @@ const BOARD_COLS = 5;
 const BG_COLORS = ['gray', 'yellow', 'green'];
 
 const WordleBoard: React.FC = () => {
+  const initialBoardState: string[][] = Array.from({length: 6}, () => Array(5).fill(''));
   const [board, setBoard] = useState<string[][]>(
-    Array.from({ length: BOARD_ROWS }, () => Array(BOARD_COLS).fill(''))
+    initialBoardState
   );
-  const [cellBackgrounds, setCellBackgrounds] = useState<string[][]>(
-    Array.from({ length: BOARD_ROWS }, () => Array(BOARD_COLS).fill(BG_COLORS[0]))
-  );
+  const initialCellBackgrounds: string[][] = Array.from({ length: BOARD_ROWS }, () => Array(BOARD_COLS).fill(BG_COLORS[0]));
+  const [cellBackgrounds, setCellBackgrounds] = useState<string[][]>(initialCellBackgrounds);
   const [activeRow, setActiveRow] = useState(0);
   const [suggestions, setSuggestions] = useState<Word[]>([]);
 
@@ -23,6 +23,15 @@ const WordleBoard: React.FC = () => {
     Array.from({ length: 6 }, () => Array.from({ length: 5 }, () => null))
   );
   const [isSubmitEnabled, setIsSubmitEnabled] = useState<boolean>(false);
+  const handleReset = () => {
+    setBoard(initialBoardState);
+    setCellBackgrounds(initialCellBackgrounds);
+    setSuggestions([]);
+    setActiveRow(0);
+    if (firstInputRef.current) {
+      firstInputRef.current.focus();
+    }
+  };
 
   useEffect(() => {
     if (firstInputRef.current) {
@@ -42,11 +51,11 @@ const WordleBoard: React.FC = () => {
       newBoard[row][col] = value.toUpperCase();
       setBoard(newBoard);
     }
-    if (col < 4) {
-      // Focus the next input in the same row
+
+    // Move focus to the next cell if not at the end
+    if (col < BOARD_COLS) {
       inputRefs.current[row][col + 1]?.focus();
-    } else if (row < 5) {
-      // Focus the first input in the next row
+    } else if (row < BOARD_ROWS) {
       inputRefs.current[row + 1][0]?.focus();
     }
   };
@@ -87,9 +96,27 @@ const WordleBoard: React.FC = () => {
   };
 
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, rowIndex: number, colIndex: number) => {
     if (e.key === 'Enter') {
       submitGuess();
+    } else if (e.key === 'Backspace') {
+      if (isSubmitEnabled) {
+        inputRefs.current[rowIndex][BOARD_COLS - 1]?.focus();
+      } else if (colIndex === 1) {
+        firstInputRef.current?.focus()
+      } else {
+        inputRefs.current[rowIndex][colIndex - 1]?.focus();
+      }
+      // Delete the last letter in the row and move focus to the previous cell
+      setBoard((prevBoard) => {
+        const newBoard = [...prevBoard];
+        if (isSubmitEnabled) {
+          newBoard[rowIndex][BOARD_COLS - 1] = '';
+        } else {
+          newBoard[rowIndex][colIndex - 1] = '';
+        }
+        return newBoard;
+      });
     }
   };
 
@@ -111,8 +138,10 @@ const WordleBoard: React.FC = () => {
                 value={letter}
                 onChange={(e) => handleInputChange(rowIndex, colIndex, e.target.value)}
                 onClick={() => handleCellClick(rowIndex, colIndex)}
+                onMouseDown={(e) => e.preventDefault()}
+                onSelect={(e) => e.preventDefault()}
                 disabled={rowIndex !== activeRow}
-                onKeyDown={handleKeyDown}
+                onKeyDown={(e) => handleKeyDown(e, rowIndex, colIndex)}
               />
             ))}
           </div>
@@ -121,6 +150,7 @@ const WordleBoard: React.FC = () => {
           </button>
         </div>
       ))}
+      <button onClick={handleReset}>Reset</button>
       <SuggestedGuesses suggestions={suggestions} />
     </div>
   );
