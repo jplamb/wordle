@@ -45,6 +45,23 @@ const WordleBoard: React.FC = () => {
     setIsSubmitEnabled(allCellsFilled);
   }, [board, activeRow]);
 
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        const firstEmptyCell: HTMLInputElement | null = document.querySelector('.WordleCell:empty>input');
+        firstEmptyCell?.focus();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // Cleanup
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
+
   const handleInputChange = (row: number, col: number, value: string) => {
     if (row === activeRow) {
       const newBoard = [...board];
