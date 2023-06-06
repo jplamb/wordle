@@ -11,3 +11,5 @@ node_modules/
 *.pyc
 
 resources/
+
+frontend/webpack-stats.json

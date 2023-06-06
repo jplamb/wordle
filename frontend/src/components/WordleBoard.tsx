@@ -137,8 +137,6 @@ const WordleBoard: React.FC = () => {
     }
   };
 
-
-
   return (
     <div className="WordleBoard">
       {board.map((row, rowIndex) => (
